@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getMovieReviews } from '../../../api/themoviedb';
+import Context from '../MoviesDetailsPageContext';
 
-const Reviews = ({ location }) => {
+const Reviews = () => {
+  const movieId = useContext(Context);
   const [ reviews, setReviews ] = useState([]);
-  const { movieId } = location.state;
-  console.log(location);
+
   const handleReviews = () => {
     getMovieReviews(movieId).then((data) => {
       setReviews([ ...reviews, ...data.results ]);
@@ -19,14 +20,14 @@ const Reviews = ({ location }) => {
     <div className="reviews">
       <h2>Reviews</h2>
       <ul>
-        {reviews.lenght &&
+        {reviews.length &&
           reviews.map((item) => (
             <li key={item.id}>
               <h4>Author: {item.author}</h4>
               <p>{item.content}</p>
             </li>
           ))}
-        {!reviews.lenght && <b>No reviews</b>}
+        {!reviews.length && <b>No reviews</b>}
       </ul>
     </div>
   );

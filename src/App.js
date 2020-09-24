@@ -7,12 +7,12 @@ import Content from './components/Content';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <NavHeader />
         <Content />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
