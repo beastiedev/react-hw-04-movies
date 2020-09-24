@@ -1,15 +1,21 @@
-import axios from "axios";
-import AppConfig from "../AppConfig";
+import axios from 'axios';
+import AppConfig from '../AppConfig';
 
-const apiKey =  AppConfig.THEMOVIEDB_API_KEY;
+const apiKey = AppConfig.TMDB_API_KEY;
 
-axios.defaults.baseURL = "https://developers.themoviedb.org/3";
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+axios.defaults.params = {
+  api_key: apiKey
+};
 
-export const getTrending = () => axios.get(`/get-trending?api_key=${apiKey}`).then((res) => console.log(res, 'getTrending'));
+export const images300Root = 'https://image.tmdb.org/t/p/w300/';
 
-// https://developers.themoviedb.org/3/trending/get-trending // список самых популярных фильмов на сегодня для создания коллекции на главной странице.
-// https://developers.themoviedb.org/3/search/search-movies // поиск кинофильма по ключевому слову на странице фильмов.
-// https://developers.themoviedb.org/3/movies/get-movie-details // запрос полной информации о фильме для страницы кинофильма.
-// https://developers.themoviedb.org/3/movies/get-movie-credits // запрос информации о актёрском составе для страницы кинофильма.
-// https://developers.themoviedb.org/3/movies/get-movie-reviews // запрос обзоров для страницы кинофильма.
+export const getTrending = () => axios.get('/trending/all/week').then((res) => res.data);
 
+export const getMovieDetails = (movieId) => axios.get(`/movie/${movieId}`).then((res) => res.data);
+
+export const getMovieCredits = (movieId) => axios.get(`/movie/${movieId}/credits`).then((res) => res.data);
+
+export const getMovieReviews = (movieId) => axios.get(`/movie/${movieId}/reviews`).then((res) => res.data);
+
+export const searchMovie = (query) => axios.get(`/search/movie?query=${query}`).then((res) => res.data);
