@@ -1,11 +1,10 @@
 import { lazy } from 'react';
-import MoviesPage from './components/MoviesPage/MoviesPage';
 
 const Home = lazy(() => import('./components/HomePage/HomePage' /* webpackChunkName: "home-page" */));
 const MovieDetails = lazy(() =>
   import('./components/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */)
 );
-// const Movies = lazy(() => import('./components/MoviesPage/MoviesPage' /* webpackChunkName: "movies-page" */));
+const Movies = lazy(() => import('./components/MoviesPage/MoviesPage' /* webpackChunkName: "movies-page" */));
 
 const routes = [
   {
@@ -20,7 +19,7 @@ const routes = [
     label: 'Movies',
     isExact: true,
     isInMenu: true,
-    component: MoviesPage
+    component: Movies
   },
   {
     path: '/movies/:movieId',
