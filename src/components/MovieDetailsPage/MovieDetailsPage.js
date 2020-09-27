@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getMovieDetails, images300Root } from '../../api/themoviedb';
-import Cast from './Cast';
-import Reviews from './Reviews';
 import Context from './MoviesDetailsPageContext';
+
+import ReleaseYear from '../ReleaseYear/ReleaseYear';
+import AdditionalInfo from './AdditionalInfo/AdditionalInfo';
 
 const MovieDetailsPage = ({ match, history }) => {
   const { movieId } = match.params;
   const { url } = match;
 
   const [ movieDetails, setMovieDetails ] = useState({});
+  const [ state ] = useState({ movieId, url });
 
   const handleClickBack = () => {
     history.goBack();
@@ -21,12 +23,10 @@ const MovieDetailsPage = ({ match, history }) => {
     });
   };
 
-  useEffect(() => {
-    handleMovieDetails();
-  }, []);
+  useEffect(handleMovieDetails, []);
 
   return (
-    <Context.Provider value={movieId}>
+    <Context.Provider value={state}>
       <div className="movie-details-page">
         <button onClick={handleClickBack}>{'< back'}</button>
         {movieDetails && (
@@ -38,7 +38,9 @@ const MovieDetailsPage = ({ match, history }) => {
             )}
 
             <div>
-              <h1>{movieDetails.title}</h1>
+              <h1>
+                {movieDetails.title} <ReleaseYear date={movieDetails.release_date} />
+              </h1>
               <p>User Score: {movieDetails.vote_average * 10}%</p>
               <h3>Overview</h3>
               <p>{movieDetails.overview}</p>
@@ -75,17 +77,7 @@ const MovieDetailsPage = ({ match, history }) => {
             </ul>
             <hr />
             <div>
-              <Context.Consumer>
-                {() => {
-                  return (
-                    <Switch>
-                      <Route path={`${url}/cast`} component={Cast} exact />
-                      <Route path={`${url}/reviews`} component={Reviews} exact />
-                      <Redirect to={url} />
-                    </Switch>
-                  );
-                }}
-              </Context.Consumer>
+              <AdditionalInfo url={url} />
             </div>
           </div>
         )}

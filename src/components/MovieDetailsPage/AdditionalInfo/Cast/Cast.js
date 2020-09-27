@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { getMovieCredits, images300Root } from '../../../api/themoviedb';
-import Context from '../MoviesDetailsPageContext';
+import { getMovieCredits, images300Root } from '../../../../api/themoviedb';
+import Context from '../../MoviesDetailsPageContext';
 
 const Cast = () => {
-  const movieId = useContext(Context);
+  const { movieId } = useContext(Context);
   const [ cast, setCast ] = useState([]);
 
   const handleCast = () => {
@@ -12,9 +12,7 @@ const Cast = () => {
     });
   };
 
-  useEffect(() => {
-    handleCast();
-  }, []);
+  useEffect(handleCast, []);
 
   return (
     <div className="Cast">

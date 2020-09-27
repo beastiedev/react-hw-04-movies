@@ -7,9 +7,9 @@ class Content extends Component {
     return (
       <div className="content">
         <Switch>
-          {routes.map(({ path, isExact, component }) => (
-            <Route key={path} path={path} component={component} exact={isExact} />
-          ))}
+          {routes.map(({ path, isExact, component }) => {
+            return <Route key={path} path={path} component={component} exact={isExact} />;
+          })}
           <Redirect to="/" />
         </Switch>
       </div>
