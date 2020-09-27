@@ -7,7 +7,7 @@ import Content from './components/Content/Content';
 
 function App() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<p className="loading">Loading...</p>}>
       <HashRouter>
         <div className="App">
           <NavHeader />

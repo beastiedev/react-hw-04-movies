@@ -43,7 +43,7 @@
 
 .details-main {
   display: flex;
-    align-items: flex-start;
+  align-items: flex-start;
 }
 
 .poster-image {
@@ -83,4 +83,15 @@
 .reviews,
 .cast {
   word-break: break-word;
+}
+
+.loading {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  line-height: 100vh;
+  text-align: center;
 }
