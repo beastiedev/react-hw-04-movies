@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "636114fc0612a7c57037696b09a44e5d",
+    "revision": "94ff426606cbdab13312b573a87a1c04",
     "url": "/react-hw-04-movies/index.html"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-hw-04-movies/static/js/main.8783e51d.chunk.js"
   },
   {
-    "revision": "142b9631be4a6e85cd16",
-    "url": "/react-hw-04-movies/static/js/movie-details-page.6dab88c1.chunk.js"
+    "revision": "da163fbe70b338ca674d",
+    "url": "/react-hw-04-movies/static/js/movie-details-page.8aaf2634.chunk.js"
   },
   {
     "revision": "5075bc40b22959151f49",
@@ -44,7 +44,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-hw-04-movies/static/js/reviews-page.39ab3df5.chunk.js"
   },
   {
-    "revision": "cba9daf05020fa832e01",
-    "url": "/react-hw-04-movies/static/js/runtime-main.bbab6c8a.js"
+    "revision": "53f6c49171c72ac77974",
+    "url": "/react-hw-04-movies/static/js/runtime-main.3de67736.js"
   }
 ]);
