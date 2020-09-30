@@ -59,6 +59,7 @@ const MovieDetailsPage = ({ match, history }) => {
         <ul>
           <li>
             <Link
+              replace
               to={{
                 pathname: `${url}/cast`,
                 state: { movieId: movieId }
@@ -69,6 +70,7 @@ const MovieDetailsPage = ({ match, history }) => {
           </li>
           <li>
             <Link
+              replace
               to={{
                 pathname: `${url}/reviews`,
                 state: { movieId: movieId }
